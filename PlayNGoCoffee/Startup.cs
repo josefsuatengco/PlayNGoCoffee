@@ -11,12 +11,12 @@ namespace PlayNGoCoffee
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -30,7 +30,7 @@ namespace PlayNGoCoffee
 
             //Add ApplicationDBContext to DI
             services.AddDbContext<ApplicationDbContext>(options => 
-                options.UseSqlServer("Server=.\\SQLEXPRESS;Database=CoffeeDB;Trusted_Connection=true;MultipleActiveResultSets=true;"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
                         
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

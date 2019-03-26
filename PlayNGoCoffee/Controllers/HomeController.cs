@@ -1,6 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PlayNGoCoffee.Models;
 
 namespace PlayNGoCoffee.Controllers
@@ -24,11 +26,7 @@ namespace PlayNGoCoffee.Controllers
         {
             //Makes sure we have a db
             mContext.Database.EnsureCreated();
-
-            //if (!mContext.Coffee.Any())
-            //{
-
-            //}
+                        
 
             return View();
         }

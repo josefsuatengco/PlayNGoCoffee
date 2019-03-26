@@ -28,6 +28,9 @@ namespace PlayNGoCoffee
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<CoffeeDataModel>().HasIndex(a => a.CoffeeName);
+            modelBuilder.Entity<IngredientDataModel>().HasIndex(a => a.IngredientName);
         }
     }
 }

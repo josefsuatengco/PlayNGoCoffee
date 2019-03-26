@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayNGoCoffee", "PlayNGoCoffee\PlayNGoCoffee.csproj", "{3F41299C-AA5C-4CEF-A9C4-226B501F330A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayNGoCoffee.Data", "PlayNGoCoffee.Data\PlayNGoCoffee.Data.csproj", "{A18E210B-96AF-4E51-B396-F23010750340}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayNGoCoffee.Data", "PlayNGoCoffee.Data\PlayNGoCoffee.Data.csproj", "{A18E210B-96AF-4E51-B396-F23010750340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayNGoCoffee.Business", "PlayNGoCoffee.Business\PlayNGoCoffee.Business.csproj", "{853BA47C-431B-4E2C-804F-0AD435D8727B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A18E210B-96AF-4E51-B396-F23010750340}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A18E210B-96AF-4E51-B396-F23010750340}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A18E210B-96AF-4E51-B396-F23010750340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{853BA47C-431B-4E2C-804F-0AD435D8727B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{853BA47C-431B-4E2C-804F-0AD435D8727B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{853BA47C-431B-4E2C-804F-0AD435D8727B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{853BA47C-431B-4E2C-804F-0AD435D8727B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

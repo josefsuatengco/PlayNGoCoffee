@@ -4439,6 +4439,19 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "PlayNGoCoffee.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "PlayNGoCoffee.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PlayNGoCoffee.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PlayNGoCoffee.Business.dll": {}
+        }
+      },
       "PlayNGoCoffee.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -12094,6 +12107,11 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "PlayNGoCoffee.Business/1.0.0": {
+      "type": "project",
+      "path": "../PlayNGoCoffee.Business/PlayNGoCoffee.Business.csproj",
+      "msbuildProject": "../PlayNGoCoffee.Business/PlayNGoCoffee.Business.csproj"
+    },
     "PlayNGoCoffee.Data/1.0.0": {
       "type": "project",
       "path": "../PlayNGoCoffee.Data/PlayNGoCoffee.Data.csproj",
@@ -12105,6 +12123,7 @@
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
+      "PlayNGoCoffee.Business >= 1.0.0",
       "PlayNGoCoffee.Data >= 1.0.0"
     ]
   },
@@ -12138,6 +12157,9 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
+            "D:\\playngo\\PlayNGoCoffee\\PlayNGoCoffee.Business\\PlayNGoCoffee.Business.csproj": {
+              "projectPath": "D:\\playngo\\PlayNGoCoffee\\PlayNGoCoffee.Business\\PlayNGoCoffee.Business.csproj"
+            },
             "D:\\playngo\\PlayNGoCoffee\\PlayNGoCoffee.Data\\PlayNGoCoffee.Data.csproj": {
               "projectPath": "D:\\playngo\\PlayNGoCoffee\\PlayNGoCoffee.Data\\PlayNGoCoffee.Data.csproj"
             }

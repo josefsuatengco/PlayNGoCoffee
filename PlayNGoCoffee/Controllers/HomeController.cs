@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PlayNGoCoffee.Business.ServiceContract;
 using PlayNGoCoffee.Models;
 
 namespace PlayNGoCoffee.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ICoffeeService coffeeService;
         #region Protected Members
         /// <summary>
         /// Scoped application context
@@ -19,6 +20,7 @@ namespace PlayNGoCoffee.Controllers
         public HomeController(ApplicationDbContext context)
         {
             mContext = context;
+            this.coffeeService = new CoffeeService(mContext);
         }
         #endregion
 
@@ -26,8 +28,9 @@ namespace PlayNGoCoffee.Controllers
         {
             //Makes sure we have a db
             mContext.Database.EnsureCreated();
-                        
-
+            
+            var location = coffeeService.GetLocations();
+            
             return View();
         }
 

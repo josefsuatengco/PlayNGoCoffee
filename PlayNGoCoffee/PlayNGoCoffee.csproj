@@ -13,6 +13,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\PlayNGoCoffee.Business\PlayNGoCoffee.Business.csproj" />
     <ProjectReference Include="..\PlayNGoCoffee.Data\PlayNGoCoffee.Data.csproj" />
   </ItemGroup>
 

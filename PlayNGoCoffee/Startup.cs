@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using System;
+using PlayNGoCoffee.Business.ServiceContract;
 
 namespace PlayNGoCoffee
 {

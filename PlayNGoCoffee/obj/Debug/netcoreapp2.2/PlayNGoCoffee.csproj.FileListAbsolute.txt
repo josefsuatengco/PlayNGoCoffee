@@ -30,3 +30,5 @@ D:\playngo\PlayNGoCoffee\PlayNGoCoffee\obj\Debug\netcoreapp2.2\PlayNGoCoffee.Vie
 D:\playngo\PlayNGoCoffee\PlayNGoCoffee\obj\Debug\netcoreapp2.2\PlayNGoCoffee.csproj.CopyComplete
 D:\playngo\PlayNGoCoffee\PlayNGoCoffee\obj\Debug\netcoreapp2.2\PlayNGoCoffee.dll
 D:\playngo\PlayNGoCoffee\PlayNGoCoffee\obj\Debug\netcoreapp2.2\PlayNGoCoffee.pdb
+D:\playngo\PlayNGoCoffee\PlayNGoCoffee\bin\Debug\netcoreapp2.2\PlayNGoCoffee.Business.dll
+D:\playngo\PlayNGoCoffee\PlayNGoCoffee\bin\Debug\netcoreapp2.2\PlayNGoCoffee.Business.pdb

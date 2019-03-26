@@ -8,4 +8,3 @@ D:\playngo\PlayNGoCoffee\PlayNGoCoffee.Data\obj\Debug\netcoreapp2.2\PlayNGoCoffe
 D:\playngo\PlayNGoCoffee\PlayNGoCoffee.Data\obj\Debug\netcoreapp2.2\PlayNGoCoffee.Data.AssemblyInfo.cs
 D:\playngo\PlayNGoCoffee\PlayNGoCoffee.Data\obj\Debug\netcoreapp2.2\PlayNGoCoffee.Data.dll
 D:\playngo\PlayNGoCoffee\PlayNGoCoffee.Data\obj\Debug\netcoreapp2.2\PlayNGoCoffee.Data.pdb
-D:\playngo\PlayNGoCoffee\PlayNGoCoffee.Data\obj\Debug\netcoreapp2.2\PlayNGoCoffee.Data.csprojAssemblyReference.cache

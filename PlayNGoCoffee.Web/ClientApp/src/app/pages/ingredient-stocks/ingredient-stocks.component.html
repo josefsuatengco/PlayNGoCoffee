@@ -1,0 +1,21 @@
+<h1>Ingredients Stocks</h1>
+
+<p *ngIf="!locations"><em>Loading Data...</em></p>
+
+<table class='table table-striped' *ngIf="ingredients">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ingredient of ingredients">
+      <td>{{ ingredient.ingredient.ingredientName }}</td>
+      <td>{{ ingredient.quantity }}</td>
+            
+    </tr>
+  </tbody>
+</table>
+

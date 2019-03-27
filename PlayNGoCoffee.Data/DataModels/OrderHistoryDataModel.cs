@@ -10,18 +10,20 @@ namespace PlayNGoCoffee
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
+        
         [Required]
-        [MaxLength(50)]
-        public string CoffeeName { get; set; }
-
-        [Required]
-        public int CoffeeId { get; set; }
+        public int RecipeId { get; set; }
 
         [MaxLength(200)]
         public string Description { get; set; }
 
         [Required]
         public DateTime DateOrdered { get; set; }
+
+        [Required]
+        public int Quantity { get; set; }
+
+
+        public RecipeDataModel Recipe { get; set; }
     }
 }

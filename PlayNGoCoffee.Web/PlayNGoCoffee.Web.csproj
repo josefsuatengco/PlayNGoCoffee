@@ -15,31 +15,35 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\coffee-app\**" />
+    <Compile Remove="ClientApp\src\app\coffee-getStock\**" />
+    <Compile Remove="ClientApp\src\app\coffee-history\**" />
+    <Compile Remove="ClientApp\src\app\service\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\coffee-app\**" />
+    <Content Remove="ClientApp\src\app\coffee-getStock\**" />
+    <Content Remove="ClientApp\src\app\coffee-history\**" />
+    <Content Remove="ClientApp\src\app\service\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\coffee-app\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\coffee-getStock\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\coffee-history\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\service\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\coffee-app\**" />
+    <None Remove="ClientApp\src\app\coffee-getStock\**" />
+    <None Remove="ClientApp\src\app\coffee-history\**" />
+    <None Remove="ClientApp\src\app\service\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="ClientApp\src\app\coffee-app\coffee-app.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PlayNGoCoffee.Business\PlayNGoCoffee.Business.csproj" />
     <ProjectReference Include="..\PlayNGoCoffee.Data\PlayNGoCoffee.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\coffee-app\coffee-app.component.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\app\coffee-getstock\" />
-    <Folder Include="ClientApp\src\app\coffee-history\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

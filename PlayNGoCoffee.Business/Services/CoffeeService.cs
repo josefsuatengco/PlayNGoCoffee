@@ -21,14 +21,14 @@ namespace PlayNGoCoffee
             this.context = context;
         }
         
-        public IEnumerable<RecipeDataModel> GetCoffeeRecipeById(int coffeeId)
+        public IEnumerable<RecipeIngredientDataModel> GetIngredientsByRecipeId(int recipeId)
         {
-            return context.Recipes.Where(x => x.CoffeeId == coffeeId);
+            return context.RecipeIngredients.Where(x => x.RecipeId == recipeId);
         }
 
-        public IEnumerable<CoffeeDataModel> GetCoffees()
+        public IEnumerable<RecipeDataModel> GetRecipes()
         {
-            return context.Coffee;
+            return context.Recipes;
         }
 
         public IEnumerable<LocationDataModel> GetLocations()
@@ -36,23 +36,23 @@ namespace PlayNGoCoffee
             return context.Locations;
         }
 
-        public IEnumerable<IngredientDataModel> GetStockByLocationId(int locationId)
+        public IEnumerable<StockDataModel> GetStockByLocationId(int locationId)
         {
-            return context.Ingredients.Where(x => x.LocationId == locationId);
+            return context.Stocks.Where(x => x.LocationId == locationId);
         }
 
         public void AddHistory(OrderHistoryDataModel history)
         {
             if (history != null)
             {
-                context.OrderHistory.Add(history);
+                context.OrderHistories.Add(history);
                 context.SaveChanges();
             }
         }
 
-        public void UseIngredients(IngredientDataModel ingredients)
+        public void UseIngredients(StockDataModel ingredients)
         {
-            var origEntity = context.Ingredients.FirstOrDefault(x => x.LocationId == ingredients.LocationId);
+            var origEntity = context.Stocks.FirstOrDefault(x => x.LocationId == ingredients.LocationId);
 
             if (origEntity != null)
             {
@@ -63,7 +63,7 @@ namespace PlayNGoCoffee
 
         public IEnumerable<OrderHistoryDataModel> GetHistory()
         {
-            return context.OrderHistory;
+            return context.OrderHistories;
         }
     }
 }

@@ -27,9 +27,9 @@ namespace PlayNGoCoffee.Web.Controllers
             this.coffeeService = new CoffeeService(mContext);
         }
         #endregion
-        
+
         [HttpGet("[action]")]
-        public IEnumerable<LocationDataModel> Initialize(int test)
+        public IEnumerable<LocationDataModel> Initialize()
         {
             //Makes sure we have a db
             mContext.Database.EnsureCreated();
@@ -38,15 +38,15 @@ namespace PlayNGoCoffee.Web.Controllers
 
             return locations;
         }
-
-        [HttpGet("[action]")]
-        public IEnumerable<IngredientDataModel> GetStock(int locationId)
+        
+        [HttpGet("[action]/{locationId}")]
+        public IEnumerable<StockDataModel> Stock(int locationId)
         {
             var stock = coffeeService.GetStockByLocationId(locationId);
 
             return stock;
         }
-
+        
         [HttpGet("[action]")]
         public IEnumerable<OrderHistoryDataModel> GetHistory()
         {

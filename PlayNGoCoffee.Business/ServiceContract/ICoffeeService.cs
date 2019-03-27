@@ -6,17 +6,18 @@ namespace PlayNGoCoffee.Business.ServiceContract
 {
     public interface ICoffeeService
     {
-        IEnumerable<CoffeeDataModel> GetCoffees();
 
-        IEnumerable<RecipeDataModel> GetCoffeeRecipeById(int coffeeId);
+        IEnumerable<RecipeIngredientDataModel> GetIngredientsByRecipeId(int recipeId);
+
+        IEnumerable<RecipeDataModel> GetRecipes();
 
         IEnumerable<LocationDataModel> GetLocations();
 
-        IEnumerable<IngredientDataModel> GetStockByLocationId(int locationId);
+        IEnumerable<StockDataModel> GetStockByLocationId(int locationId);
 
         void AddHistory(OrderHistoryDataModel history);
 
-        void UseIngredients(IngredientDataModel ingredients);
+        void UseIngredients(StockDataModel ingredients);
 
         IEnumerable<OrderHistoryDataModel> GetHistory();
     }

@@ -10,7 +10,7 @@ using PlayNGoCoffee.Business.ServiceContract;
 namespace PlayNGoCoffee.Web.Controllers
 {
     [Route("api/[controller]")]
-    public class CoffeeController : Controller
+    public class GetStockController : Controller
     {
         private readonly ICoffeeService coffeeService;
         #region Protected Members
@@ -21,15 +21,15 @@ namespace PlayNGoCoffee.Web.Controllers
         #endregion
 
         #region Constructor
-        public CoffeeController(ApplicationDbContext context)
+        public GetStockController(ApplicationDbContext context)
         {
             mContext = context;
             this.coffeeService = new CoffeeService(mContext);
         }
         #endregion
-        
+
         [HttpGet("[action]")]
-        public IEnumerable<LocationDataModel> Initialize(int test)
+        public IEnumerable<LocationDataModel> Initialize()
         {
             //Makes sure we have a db
             mContext.Database.EnsureCreated();
@@ -42,20 +42,12 @@ namespace PlayNGoCoffee.Web.Controllers
         [HttpGet("[action]")]
         public IEnumerable<IngredientDataModel> GetStock(int locationId)
         {
-            var stock = coffeeService.GetStockByLocationId(locationId);
-
-            return stock;
-        }
-
-        [HttpGet("[action]")]
-        public IEnumerable<OrderHistoryDataModel> GetHistory()
-        {
             //Makes sure we have a db
             mContext.Database.EnsureCreated();
 
-            var history = coffeeService.GetHistory();
+            var stock = coffeeService.GetStockByLocationId(locationId);
 
-            return history;
+            return stock;
         }
     }
 }

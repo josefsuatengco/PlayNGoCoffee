@@ -7,16 +7,16 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component'; 
 import { CoffeeAppComponent } from './coffee-app/coffee-app.component';
+import { CoffeeGetStockComponent } from './coffee-getStock/coffee-getStock.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    FetchDataComponent,
-    CoffeeAppComponent
+    CoffeeAppComponent,
+    CoffeeGetStockComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,8 +24,8 @@ import { CoffeeAppComponent } from './coffee-app/coffee-app.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'fetch-data', component: FetchDataComponent },
       { path: 'coffee-app', component: CoffeeAppComponent },
+      { path: 'coffee-getStock', component: CoffeeGetStockComponent }
     ])
   ],
   providers: [],

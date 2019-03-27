@@ -1,6 +1,5 @@
-<h1>Make Coffee</h1>
+<h1>Get remaining ingredient stock</h1>
 <h2>Select Pantry</h2>
-
 <p *ngIf="!locations"><em>Loading Data...</em></p>
 
 <table class='table table-striped' *ngIf="locations">
@@ -15,8 +14,9 @@
     <tr *ngFor="let location of locations">
       <td>{{ location.locationName }}</td>
       <td>{{ location.description }}</td>
+      <td><input type="button" value="Select" ng-click="GetStock(location.Id)" /></td>
 
-      <td><input type="button" value="Select" (click)="onClick(location.id)" /></td>
-    </tr>
+</tr>
   </tbody>
 </table>
+

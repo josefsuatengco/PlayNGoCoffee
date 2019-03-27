@@ -10,14 +10,13 @@ namespace PlayNGoCoffee
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
-        public string IngredientName { get; set; }
+        public int CoffeeBeanStock { get; set; }
         
         [Required]
-        public int Stock { get; set; }
-
-        [MaxLength(200)]
-        public string Description { get; set; }
+        public int MilkStock { get; set; }
+        
+        [Required]
+        public int SugarStock { get; set; }
 
         [Required]
         public int LocationId { get; set; }

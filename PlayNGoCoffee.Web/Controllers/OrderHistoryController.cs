@@ -1,44 +1,45 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace PlayNGoCoffee.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LocationController : ControllerBase
+    public class OrderHistoryController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public LocationController(ApplicationDbContext context)
+        public OrderHistoryController(ApplicationDbContext context)
         {
             this._context = context;
         }
 
-        // GET: api/Location
+        // GET: api/OrderHistory
         [HttpGet]
-        public IEnumerable<LocationDataModel> Get()
+        public IEnumerable<OrderHistoryDataModel> Get()
         {
-            return _context.Locations;
+            return _context.OrderHistories.Include(s => s.Recipe);
         }
 
-        // GET: api/Location/5
-        [HttpGet("{id}", Name = "GetStock")]
-        public IEnumerable<StockDataModel> Get(int id)
+        // GET: api/OrderHistory/5
+        [HttpGet("{id}", Name = "Get2")]
+        public string Get(int id)
         {
-            var stocks = _context.Stocks.Include(s => s.Ingredient).Where(a => a.LocationId == id);
-
-            return stocks;
+            return "value";
         }
 
-        // POST: api/Location
+        // POST: api/OrderHistory
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT: api/Location/5
+        // PUT: api/OrderHistory/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {

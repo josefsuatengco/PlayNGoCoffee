@@ -1,0 +1,21 @@
+<h1>Order History</h1>
+
+<p *ngIf="!orderHistories"><em>No History Found</em></p>
+
+<table class='table table-striped' *ngIf="orderHistories">
+  <thead>
+    <tr>
+      <th>Coffee Name</th>
+      <th>Date Ordered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let orderHistory of orderHistories">
+      <td>{{ orderHistory.recipe.name }}</td>
+      <td>{{ orderHistory.dateOrdered | date : medium}}</td>
+
+      <!--<td><input type="button" value="Select" (click)="onClick(location.id)" /></td>-->
+    </tr>
+  </tbody>
+</table>
+

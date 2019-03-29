@@ -1,44 +1,44 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PlayNGoCoffee.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LocationController : ControllerBase
+    public class RecipeController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public LocationController(ApplicationDbContext context)
+        public RecipeController(ApplicationDbContext context)
         {
             this._context = context;
         }
 
-        // GET: api/Location
+        // GET: api/RecipeIngredient
         [HttpGet]
-        public IEnumerable<LocationDataModel> Get()
+        public IEnumerable<RecipeDataModel> Get()
         {
-            return _context.Locations;
+            return _context.Recipes;
         }
 
-        // GET: api/Location/5
-        [HttpGet("{id}", Name = "GetStock")]
-        public IEnumerable<StockDataModel> Get(int id)
+        // GET: api/RecipeIngredient/5
+        [HttpGet("{id}", Name = "Get")]
+        public string Get(int id)
         {
-            var stocks = _context.Stocks.Include(s => s.Ingredient).Where(a => a.LocationId == id);
-
-            return stocks;
+            return "value";
         }
 
-        // POST: api/Location
+        // POST: api/RecipeIngredient
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT: api/Location/5
+        // PUT: api/RecipeIngredient/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {

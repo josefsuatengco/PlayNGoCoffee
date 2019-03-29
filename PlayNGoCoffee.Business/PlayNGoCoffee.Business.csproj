@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\Concrete\" />
-    <Folder Include="Repository\Contract\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PlayNGoCoffee.Data\PlayNGoCoffee.Data.csproj" />
   </ItemGroup>
 

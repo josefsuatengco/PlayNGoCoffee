@@ -13,7 +13,7 @@ namespace PlayNGoCoffee
         public int IngredientId { get; set; }
 
         [Required]
-        public int Quantity { get; set; }
+        public int Unit { get; set; }
 
         [Required]
         public int LocationId { get; set; }

@@ -1,21 +1,42 @@
-<h1>Ingredients Stocks</h1>
+<h1>Ingredients on Stocks</h1>
 
-<p *ngIf="!locations"><em>Loading Data...</em></p>
+<p *ngIf="!ingredientStock"><em>No Ingredients in stock</em></p>
+<p *ngIf="ingredientStock.length === 0"><em>No Ingredients in stock</em></p>
 
-<table class='table table-striped' *ngIf="ingredients">
+<table class='table table-striped' *ngIf="ingredientStock.length > 0">
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Ingredient</th>
+      <th>Stock Remaining</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let ingredient of ingredients">
-      <td>{{ ingredient.ingredient.ingredientName }}</td>
-      <td>{{ ingredient.quantity }}</td>
-            
+    <tr *ngFor="let stock of ingredientStock">
+      <td>{{ stock.ingredient.ingredientName }}</td>
+      <td>{{ stock.unit }} unit(s)</td>
+
     </tr>
   </tbody>
 </table>
 
+
+<h1 *ngIf="recipes && ingredientStock.length > 0">Select Coffee</h1>
+<p *ngIf="!ingredientStock"><em>No Ingredients in stock</em></p>
+
+<table class='table table-striped' *ngIf="recipes && ingredientStock.length > 0">
+  <thead>
+    <tr>
+      <th>Coffee Name</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let recipe of recipes">
+      <td>{{ recipe.name }}</td>
+      <td>{{ recipe.description }}</td>
+      <td><input type="button" value="Select" (click)="onClick(recipe.id, recipe.name)" /></td>
+
+    </tr>
+  </tbody>
+</table>

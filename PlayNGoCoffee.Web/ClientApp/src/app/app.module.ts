@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CoreModule } from './core/core.module';
 import { IngredientStocksComponent } from './pages/ingredient-stocks/ingredient-stocks.component';
+import { NavMenuComponent } from './pages/nav-menu/nav-menu.component';
+import { OrderHistoryComponent } from './pages/order-history/order-history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    IngredientStocksComponent
+    IngredientStocksComponent,
+    NavMenuComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -21,6 +25,7 @@ import { IngredientStocksComponent } from './pages/ingredient-stocks/ingredient-
     CoreModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'order-history', component: OrderHistoryComponent, pathMatch: 'full' },
       { path: 'location/:id', component: IngredientStocksComponent }
     ])
   ],

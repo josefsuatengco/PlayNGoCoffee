@@ -31,9 +31,6 @@ namespace PlayNGoCoffee.Web.Controllers
         [HttpGet("[action]")]
         public IEnumerable<LocationDataModel> Initialize()
         {
-            //Makes sure we have a db
-            mContext.Database.EnsureCreated();
-
             var locations = coffeeService.GetLocations();
 
             return locations;
@@ -50,9 +47,6 @@ namespace PlayNGoCoffee.Web.Controllers
         [HttpGet("[action]")]
         public IEnumerable<OrderHistoryDataModel> GetHistory()
         {
-            //Makes sure we have a db
-            mContext.Database.EnsureCreated();
-
             var history = coffeeService.GetHistory();
 
             return history;

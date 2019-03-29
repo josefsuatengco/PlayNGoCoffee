@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/core/services/data.service';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-ingredient-stocks',
@@ -8,14 +9,58 @@ import { DataService } from 'src/app/core/services/data.service';
   styleUrls: ['./ingredient-stocks.component.css']
 })
 export class IngredientStocksComponent implements OnInit {
-  public ingredients:any;
+  public ingredientStock: any;
+  public recipes: any;
+  public recipeIngredients: any;
+  public locationId: any;
 
-  constructor(private activatedRoute:ActivatedRoute, private dataService:DataService) 
-  { 
-    let locationId = activatedRoute.snapshot.params['id'];
-    console.log(locationId);
+  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private router: Router) {
+    this.locationId = activatedRoute.snapshot.params['id'];
 
-    this.dataService.getIngredientStocksByLocationId(locationId).subscribe(res => {this.ingredients = res});
+    this.dataService.getIngredientStocksByLocationId(this.locationId).subscribe(res => { this.ingredientStock = res });
+
+    this.dataService.getAllRecipesDataModel().subscribe(res => { this.recipes = res });
+
+    this.dataService.getAllRecipeIngredientsDataModel().subscribe(res => { this.recipeIngredients = res });
+  }
+
+  public onClick(id: number, name: string) {
+    if (confirm("Make " + name + "?")) {
+      let nonNegStock: boolean = true;
+      let updatedStock: any;
+      let ingredientsOnStock = this.ingredientStock.map(x => Object.assign({}, x));
+      let ingredientOnStock: any;
+      let stockToSave: any;
+      let index: any;
+
+      console.log(ingredientsOnStock);
+      if (ingredientsOnStock.length === 0) {
+        alert("Not enough stock to make coffee.");
+      }
+      else {
+
+        this.recipeIngredients.filter(a => a.recipeId === id)
+          .forEach(function (recipeIngredient) {
+            ingredientOnStock = ingredientsOnStock.filter(b => b.ingredientId === recipeIngredient.ingredientId).map(x => Object.assign({}, x))[0];
+            index = ingredientsOnStock.findIndex(x => x.ingredientId === recipeIngredient.ingredientId);
+
+            if ((ingredientOnStock.unit - recipeIngredient.unit) < 0) {
+              nonNegStock = false;
+            }
+            else {
+              ingredientsOnStock[index].unit = ingredientOnStock.unit - recipeIngredient.unit;
+            }
+          });
+
+        if (nonNegStock) {
+          this.dataService.updateStock(this.locationId, ingredientsOnStock);
+        }
+        else {
+          alert("Not enough stock to make coffee.");
+        }
+      }
+    }
+
   }
 
   ngOnInit() {

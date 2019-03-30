@@ -9,15 +9,15 @@ namespace PlayNGoCoffee.Business.ServiceContract
 
         IEnumerable<RecipeIngredientDataModel> GetIngredientsByRecipeId(int recipeId);
 
+        IEnumerable<RecipeIngredientDataModel> GetAllIngredients();
+
         IEnumerable<RecipeDataModel> GetRecipes();
 
         IEnumerable<LocationDataModel> GetLocations();
 
         IEnumerable<StockDataModel> GetStockByLocationId(int locationId);
 
-        void AddHistory(OrderHistoryDataModel history);
-
-        void UseIngredients(StockDataModel ingredients);
+        void UpdateStock(IEnumerable<StockDataModel> updatedStocks, int recipeId);
 
         IEnumerable<OrderHistoryDataModel> GetHistory();
     }

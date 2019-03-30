@@ -18,7 +18,7 @@ namespace PlayNGoCoffee
         [Required]
         public int LocationId { get; set; }
         
-
+        
         public IngredientDataModel Ingredient { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PlayNGoCoffee.Business.ServiceContract;
 
 namespace PlayNGoCoffee.Web.Controllers
 {
@@ -13,17 +14,19 @@ namespace PlayNGoCoffee.Web.Controllers
     public class OrderHistoryController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly ICoffeeService _service;
 
         public OrderHistoryController(ApplicationDbContext context)
         {
             this._context = context;
+            this._service = new CoffeeService(context);
         }
 
         // GET: api/OrderHistory
         [HttpGet]
         public IEnumerable<OrderHistoryDataModel> Get()
         {
-            return _context.OrderHistories.Include(s => s.Recipe);
+            return _service.GetHistory();
         }
 
         // GET: api/OrderHistory/5
@@ -40,7 +43,7 @@ namespace PlayNGoCoffee.Web.Controllers
         }
 
         // PUT: api/OrderHistory/5
-        [HttpPut("{id}")]
+        [HttpPut("{id}", Name = "put2")]
         public void Put(int id, [FromBody] string value)
         {
         }

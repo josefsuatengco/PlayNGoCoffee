@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  public recipeIngredients: any;
+  public retPutData: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
 
   }
 
@@ -35,9 +36,13 @@ export class DataService {
     return this.http.get('api/OrderHistory');
   }
 
-  public updateStock(locationId: number, updatedStocks: object) {
+  public updateStock(locationId: number, updatedStocks: object, recipeId: number) {
     let value = JSON.stringify(updatedStocks);
-    let url = '/api/RecipeIngredients/'+locationId;
-    return this.http.put<void>(url, value, {headers: new HttpHeaders({'Content-Type': 'application/json'})});
+    let url = '/api/RecipeIngredients/' + recipeId.toString();
+    return this.http.put(url, value,{headers: new HttpHeaders({ 'Content-Type': 'application/json' })})
+      .subscribe(response => {
+        alert("Coffee Made!");
+        location.reload(true);
+      });
   }
 }

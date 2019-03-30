@@ -24,7 +24,7 @@ export class IngredientStocksComponent implements OnInit {
     this.dataService.getAllRecipeIngredientsDataModel().subscribe(res => { this.recipeIngredients = res });
   }
 
-  public onClick(id: number, name: string) {
+  public onClick(recipeId: number, name: string) {
     if (confirm("Make " + name + "?")) {
       let nonNegStock: boolean = true;
       let updatedStock: any;
@@ -32,14 +32,13 @@ export class IngredientStocksComponent implements OnInit {
       let ingredientOnStock: any;
       let stockToSave: any;
       let index: any;
-
-      console.log(ingredientsOnStock);
+      
       if (ingredientsOnStock.length === 0) {
         alert("Not enough stock to make coffee.");
       }
       else {
 
-        this.recipeIngredients.filter(a => a.recipeId === id)
+        this.recipeIngredients.filter(a => a.recipeId === recipeId)
           .forEach(function (recipeIngredient) {
             ingredientOnStock = ingredientsOnStock.filter(b => b.ingredientId === recipeIngredient.ingredientId).map(x => Object.assign({}, x))[0];
             index = ingredientsOnStock.findIndex(x => x.ingredientId === recipeIngredient.ingredientId);
@@ -53,7 +52,7 @@ export class IngredientStocksComponent implements OnInit {
           });
 
         if (nonNegStock) {
-          this.dataService.updateStock(this.locationId, ingredientsOnStock);
+          this.dataService.updateStock(this.locationId, ingredientsOnStock, recipeId);
         }
         else {
           alert("Not enough stock to make coffee.");

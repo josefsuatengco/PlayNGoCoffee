@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PlayNGoCoffee.Business.ServiceContract;
 
 namespace PlayNGoCoffee.Web.Controllers
 {
@@ -12,17 +13,19 @@ namespace PlayNGoCoffee.Web.Controllers
     public class RecipeController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly ICoffeeService _service;
 
         public RecipeController(ApplicationDbContext context)
         {
             this._context = context;
+            this._service = new CoffeeService(context);
         }
 
         // GET: api/RecipeIngredient
         [HttpGet]
         public IEnumerable<RecipeDataModel> Get()
         {
-            return _context.Recipes;
+            return _service.GetRecipes();
         }
 
         // GET: api/RecipeIngredient/5
@@ -39,7 +42,7 @@ namespace PlayNGoCoffee.Web.Controllers
         }
 
         // PUT: api/RecipeIngredient/5
-        [HttpPut("{id}")]
+        [HttpPut("{id}", Name ="put3")]
         public void Put(int id, [FromBody] string value)
         {
         }

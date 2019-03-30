@@ -10,7 +10,7 @@ using PlayNGoCoffee.Business.ServiceContract;
 namespace PlayNGoCoffee.Web.Controllers
 {
     [Route("api/[controller]")]
-    public class CoffeeController : Controller
+    public class CoffeeTestController : Controller
     {
         private readonly ICoffeeService coffeeService;
         #region Protected Members
@@ -21,7 +21,7 @@ namespace PlayNGoCoffee.Web.Controllers
         #endregion
 
         #region Constructor
-        public CoffeeController(ApplicationDbContext context)
+        public CoffeeTestController(ApplicationDbContext context)
         {
             mContext = context;
             this.coffeeService = new CoffeeService(mContext);

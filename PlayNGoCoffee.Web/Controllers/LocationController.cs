@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PlayNGoCoffee.Business.ServiceContract;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,24 +11,26 @@ namespace PlayNGoCoffee.Web.Controllers
     public class LocationController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly ICoffeeService _service;
 
         public LocationController(ApplicationDbContext context)
         {
             this._context = context;
+            this._service = new CoffeeService(context);
         }
 
         // GET: api/Location
         [HttpGet]
         public IEnumerable<LocationDataModel> Get()
         {
-            return _context.Locations;
+            return _service.GetLocations();
         }
 
         // GET: api/Location/5
         [HttpGet("{id}", Name = "GetStock")]
         public IEnumerable<StockDataModel> Get(int id)
         {
-            var stocks = _context.Stocks.Include(s => s.Ingredient).Where(a => a.LocationId == id);
+            var stocks = _service.GetStockByLocationId(id);
 
             return stocks;
         }
@@ -39,7 +42,7 @@ namespace PlayNGoCoffee.Web.Controllers
         }
 
         // PUT: api/Location/5
-        [HttpPut("{id}")]
+        [HttpPut("{id}", Name="put1")]
         public void Put(int id, [FromBody] string value)
         {
         }

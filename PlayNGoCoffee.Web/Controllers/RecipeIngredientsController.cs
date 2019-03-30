@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PlayNGoCoffee.Business.ServiceContract;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,17 +11,19 @@ namespace PlayNGoCoffee.Web.Controllers
     public class RecipeIngredientsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly ICoffeeService _service;
 
         public RecipeIngredientsController(ApplicationDbContext context)
         {
             this._context = context;
+            this._service = new CoffeeService(context);
         }
 
         // GET: api/RecipeIngredients
         [HttpGet]
         public IEnumerable<RecipeIngredientDataModel> Get()
         {
-            var recipeIngredients = _context.RecipeIngredients.Include(s => s.Ingredient).Include(a => a.Recipe);
+            var recipeIngredients = _service.GetAllIngredients();
             return recipeIngredients;
         }
 
@@ -28,8 +31,7 @@ namespace PlayNGoCoffee.Web.Controllers
         [HttpGet("{id}", Name = "GetRecipeIngredient")]
         public IEnumerable<RecipeIngredientDataModel> Get(int id)
         {
-            var recipeIngredients = _context.RecipeIngredients.Include(a => a.Recipe).Include(s => s.Ingredient).Where(x => x.RecipeId == id);
-            
+            var recipeIngredients = this._service.GetIngredientsByRecipeId(id);            
             return recipeIngredients;
         }
 
@@ -41,9 +43,9 @@ namespace PlayNGoCoffee.Web.Controllers
 
         // PUT: api/RecipeIngredients/5
         [HttpPut("{id}")]
-        public bool Put(int id, [FromBody] IEnumerable<StockDataModel> value)
+        public void Put(int id, [FromBody] IEnumerable<StockDataModel> updatedStocks)
         {
-            return true;
+            this._service.UpdateStock(updatedStocks, id);            
         }
 
         // DELETE: api/ApiWithActions/5

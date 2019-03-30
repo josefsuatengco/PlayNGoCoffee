@@ -1,7 +1,7 @@
 <h1>Order Coffee</h1>
 <h2>Select Pantry</h2>
 
-<p *ngIf="!locations"><em>No History Found</em></p>
+<p *ngIf="!locations"><em>Loading Data</em></p>
 
 <table class='table table-striped' *ngIf="locations">
   <thead>
@@ -15,7 +15,6 @@
     <tr *ngFor="let location of locations">
       <td>{{ location.locationName }}</td>
       <td>{{ location.description }}</td>
-            
       <td><input type="button" value="Select" (click)="onClick(location.id)"  /></td>
     </tr>
   </tbody>

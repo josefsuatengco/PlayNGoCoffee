@@ -15,7 +15,9 @@
     <tr *ngFor="let location of locations">
       <td>{{ location.locationName }}</td>
       <td>{{ location.description }}</td>
-      <td><input type="button" value="Select" (click)="onClick(location.id)"  /></td>
+      <td>
+        <button class="btn btn-sm btn-primary" type="button" (click)="onClick(location.id)">Select</button>
+      </td>
     </tr>
   </tbody>
 </table>

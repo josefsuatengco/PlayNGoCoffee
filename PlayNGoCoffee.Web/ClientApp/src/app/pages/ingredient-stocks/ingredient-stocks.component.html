@@ -18,7 +18,7 @@
   </tbody>
 </table> -->
 
-<div id="stockChart" style="height: 370px; width: 100%;"></div>
+<div id="stockChart" style="height: 300px; width: 100%;"></div>
 
 <h1 *ngIf="recipes && ingredientStock.length > 0">Select Coffee</h1>
 
@@ -34,7 +34,9 @@
     <tr *ngFor="let recipe of recipes">
       <td>{{ recipe.name }}</td>
       <td>{{ recipe.description }}</td>
-      <td><input type="button" value="Select" (click)="onClick(recipe.id, recipe.name)" /></td>
+      <td>
+        <button class="btn btn-sm btn-primary" type="button" (click)="onClick(recipe.id, recipe.name)">Select</button>
+      </td>
     </tr>
   </tbody>
 </table>

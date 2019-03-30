@@ -49,9 +49,9 @@ namespace PlayNGoCoffee
                 new StockDataModel { Id = 1, IngredientId = 1, Unit = 45, LocationId = 1 },
                 new StockDataModel { Id = 2, IngredientId = 2, Unit = 45, LocationId = 1 },
                 new StockDataModel { Id = 3, IngredientId = 3, Unit = 45, LocationId = 1 },
-                new StockDataModel { Id = 4, IngredientId = 1, Unit = 0, LocationId = 2 },
-                new StockDataModel { Id = 5, IngredientId = 2, Unit = 0, LocationId = 2 },
-                new StockDataModel { Id = 6, IngredientId = 3, Unit = 0, LocationId = 2 });
+                new StockDataModel { Id = 4, IngredientId = 1, Unit = 1, LocationId = 2 },
+                new StockDataModel { Id = 5, IngredientId = 2, Unit = 1, LocationId = 2 },
+                new StockDataModel { Id = 6, IngredientId = 3, Unit = 1, LocationId = 2 });
 
             modelBuilder.Entity<LocationDataModel>().HasData(
             new LocationDataModel { Id = 1, LocationName = "Pantry 1", Description = "First Location" },

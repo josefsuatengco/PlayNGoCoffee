@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using PlayNGoCoffee.Business.ServiceContract;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PlayNGoCoffee.Web.Controllers
 {

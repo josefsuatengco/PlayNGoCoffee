@@ -48,26 +48,29 @@ namespace PlayNGoCoffee
             modelBuilder.Entity<StockDataModel>().HasData(
                 new StockDataModel { Id = 1, IngredientId = 1, Unit = 45, LocationId = 1 },
                 new StockDataModel { Id = 2, IngredientId = 2, Unit = 45, LocationId = 1 },
-                new StockDataModel { Id = 3, IngredientId = 3, Unit = 45, LocationId = 1 });
+                new StockDataModel { Id = 3, IngredientId = 3, Unit = 45, LocationId = 1 },
+                new StockDataModel { Id = 4, IngredientId = 1, Unit = 0, LocationId = 2 },
+                new StockDataModel { Id = 5, IngredientId = 2, Unit = 0, LocationId = 2 },
+                new StockDataModel { Id = 6, IngredientId = 3, Unit = 0, LocationId = 2 });
 
             modelBuilder.Entity<LocationDataModel>().HasData(
             new LocationDataModel { Id = 1, LocationName = "Pantry 1", Description = "First Location" },
             new LocationDataModel { Id = 2, LocationName = "Pantry 2", Description = "Second Location" });
 
             modelBuilder.Entity<RecipeIngredientDataModel>().HasData(
-              new RecipeIngredientDataModel {  RecipeId = 1, IngredientId = 1, Unit = 3 },
+              new RecipeIngredientDataModel { RecipeId = 1, IngredientId = 1, Unit = 3 },
 
-              new RecipeIngredientDataModel {  RecipeId = 2, IngredientId = 1, Unit = 2 },
-              new RecipeIngredientDataModel {  RecipeId = 2, IngredientId = 2, Unit = 5 },
-              new RecipeIngredientDataModel {  RecipeId = 2, IngredientId = 3, Unit = 3 },
+              new RecipeIngredientDataModel { RecipeId = 2, IngredientId = 1, Unit = 2 },
+              new RecipeIngredientDataModel { RecipeId = 2, IngredientId = 2, Unit = 5 },
+              new RecipeIngredientDataModel { RecipeId = 2, IngredientId = 3, Unit = 3 },
 
-              new RecipeIngredientDataModel {  RecipeId = 3, IngredientId = 1, Unit = 2 },
-              new RecipeIngredientDataModel {  RecipeId = 3, IngredientId = 2, Unit = 1 },
-              new RecipeIngredientDataModel {  RecipeId = 3, IngredientId = 3, Unit = 4 });
+              new RecipeIngredientDataModel { RecipeId = 3, IngredientId = 1, Unit = 2 },
+              new RecipeIngredientDataModel { RecipeId = 3, IngredientId = 2, Unit = 1 },
+              new RecipeIngredientDataModel { RecipeId = 3, IngredientId = 3, Unit = 4 });
 
             modelBuilder.Entity<OrderHistoryDataModel>().HasData(
-            new OrderHistoryDataModel { Id = 1, RecipeId = 1, DateOrdered = DateTime.Now },
-            new OrderHistoryDataModel { Id = 2, RecipeId = 3, DateOrdered = DateTime.Now });
+            new OrderHistoryDataModel { Id = 1, RecipeId = 1, DateOrdered = DateTime.Now, Quantity = 1 },
+            new OrderHistoryDataModel { Id = 2, RecipeId = 3, DateOrdered = DateTime.Now, Quantity = 1 });
             #endregion
         }
     }

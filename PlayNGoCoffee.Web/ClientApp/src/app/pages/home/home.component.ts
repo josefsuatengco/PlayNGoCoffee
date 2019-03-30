@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   public locations: any;
 
   constructor(private dataService: DataService, private router:Router) {
-    this.dataService.getLocation().subscribe(res => { this.locations = res });
+    this.dataService.getLocation().subscribe(res => { this.locations = res; });
   }
 
   public onClick(id:number){

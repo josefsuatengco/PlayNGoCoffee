@@ -2,6 +2,9 @@
 
 <p *ngIf="!orderHistories"><em>No History Found</em></p>
 
+<div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;">
+</div>
+
 <table class='table table-striped' *ngIf="orderHistories">
   <thead>
     <tr>
@@ -14,7 +17,7 @@
       <td>{{ orderHistory.recipe.name }}</td>
       <td>{{ orderHistory.dateOrdered | date : medium}}</td>
 
-      <!--<td><input type="button" value="Select" (click)="onClick(location.id)" /></td>-->
+
     </tr>
   </tbody>
 </table>

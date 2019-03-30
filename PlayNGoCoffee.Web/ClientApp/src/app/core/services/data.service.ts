@@ -36,6 +36,10 @@ export class DataService {
     return this.http.get('api/OrderHistory');
   }
 
+  public getHistoryChartData() {
+    return this.http.get('api/HistoryChartData');
+  }
+
   public updateStock(locationId: number, updatedStocks: object, recipeId: number) {
     let value = JSON.stringify(updatedStocks);
     let url = '/api/RecipeIngredients/' + recipeId.toString();
